@@ -1,0 +1,158 @@
+{% extends '../base.html' %}
+
+{% block content %}
+{% if success %}
+<div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  <h4><i class="icon fa fa-check"></i> Sucesso!</h4>
+  {{success}}
+</div>
+{% endif %}
+    <section class="content-header">
+      <h1>
+        Dashboard
+        {% if request.user.is_staff %}
+        <small>Painel do Administrador</small>
+        {% else %}
+        <small>Painel do Usuário</small>
+        {% endif %}
+      </h1>
+      <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+      </ol>
+    </section>
+
+    {% if request.user.is_staff %}
+
+    <section class="content">
+        <div class="row">
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ informatica|length }}</h3>
+
+              <p>Informática</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-desktop"></i>
+            </div>
+            <a href="{% url 'setores:informatica' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ limpeza|length }}</h3>
+
+              <p>Limpeza</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-broom"></i>
+            </div>
+            <a href="{% url 'setores:lim' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ cozinha|length }}</h3>
+
+              <p>Cozinha</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-glass-cheers"></i>
+            </div>
+            <a href="{% url 'setores:coz' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-xs-4">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ administracao|length }}</h3>
+
+              <p>Administração</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-toolbox"></i>
+            </div>
+            <a href="{% url 'setores:adm' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+    </section>
+    {% else %}
+    <section class="content">
+      <div class="row">
+      <div class="col-lg-4 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{ informatica|length }}</h3>
+
+            <p>Informática</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-desktop"></i>
+          </div>
+          <a href="{% url 'setores:user-info' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{ limpeza|length }}</h3>
+
+            <p>Limpeza</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-broom"></i>
+          </div>
+          <a href="{% url 'setores:user-lim' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{ cozinha|length }}</h3>
+
+            <p>Cozinha</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-glass-cheers"></i>
+          </div>
+          <a href="{% url 'setores:user-coz' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{ administracao|length }}</h3>
+
+            <p>Administração</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-toolbox"></i>
+          </div>
+          <a href="{% url 'setores:user-adm' %}" class="small-box-footer">Visualizar Solicitações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+    </div>
+  </section>
+    {% endif %}
+
+{% endblock %}

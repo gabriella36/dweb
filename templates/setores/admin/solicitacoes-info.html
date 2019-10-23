@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Solicitações
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Lista de Solicitações Informática</h3>
+      </div>
+      <div class="box-body no-padding">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th style="width: 5%">#</th>
+              <th>Usuário</th>
+              <th>Sala</th>
+              <th>Horário</th>
+              <th>Responsável</th>
+              <th>Data e Hora da Solicitação</th>
+            </tr>
+            {% for obj in object_list %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ obj.usuario.first_name }}</td>
+              <td>{{ obj.sala }}</td>
+              <td>{{ obj.horario }}</td>
+              <td>{{ obj.responsavel }}</td>
+              <td>{{ obj.data_solicitacao }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+  </section>
+  <!-- /.content -->
+{% endblock %}

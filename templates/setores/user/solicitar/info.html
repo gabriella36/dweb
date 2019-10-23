@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Solicitação Informática
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Formulário</h3>
+
+      </div>
+      <div class="box-body">
+          <form method="post">
+            {% csrf_token %}
+            <input name="user" id="id_user" value="{{ request.user.id }}" hidden>
+            <div class="form-group">
+                <label for="id_sala">Sala:</label> <input type="text" name="sala" maxlength="100" required id="id_sala" class="form-control" placeholder="Sala 14" />
+            </div>
+            <div class="form-group">
+                <label for="id_hora">Horário:</label> <input type="time" name="hora" required id="id_hora" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="id_res">Responsável Pela Sala:</label> <input type="text" name="res" required id="id_res" class="form-control" placeholder="Caio Ramalho" />
+            </div>
+            <div class="btn-solicitar">
+              <a href="{% url 'setores:dashboard' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+              <button type="submit" class="btn btn-success">Solicitar</button>
+            </div>
+          </form>
+      </div>
+      <!-- /.box-body -->
+
+    </div>
+    <!-- /.box -->
+
+  </section>
+  <!-- /.content -->
+{% endblock %}
